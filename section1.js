@@ -138,12 +138,12 @@ let chars = ['A', ...'BC', 'D'];
 console.log(chars); // ["A", "B", "C", "D"]
 
 //Object Literal Syntax Extensions in ES6
-let name = 'Computer',
-    status = 'On';
+let name1 = 'Computer',
+    status1 = 'On';
 
 let machine0 = {
-   name,
-   status
+   name: name1,
+   status: status1
 };
 
 console.log(machine0)
