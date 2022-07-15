@@ -1,12 +1,12 @@
 let x = 10;
 if (x == 10) {
     let x = 20;
-    console.log(x); // 20:  reference x inside the block
+    // 20:  reference x inside the block
 }
-console.log(x); // 10: reference at the begining of the script
+// 10: reference at the begining of the script
 
 var a = 10;
-console.log(a); // 10
+//console.log(a); // 10
 
 //for (let i = 0; i < 5; i++) {
 //    setTimeout(() => console.log(i), 1000);
@@ -21,7 +21,7 @@ console.log(a); // 10
     // would cause a ReferenceError
 
     let message= 'Hello'; // TDZ ends
-    log(); // called outside TDZ
+    //log(); // called outside TDZ
 }
 
 //{ // TDZ starts
@@ -41,7 +41,7 @@ const CONSTANT_NAME = "value";
 let b = 10;
 b = 20;
 b = b + 5;
-console.log(a); // 25
+// 25
 
 const RATE = 0.1;
 //RATE = 0.2; // TypeError
@@ -53,7 +53,7 @@ const RATE = 0.1;
 
 const person = { age: 20 };
 person.age = 30; // OK
-console.log(person.age); // 30
+// 30
 
 //person = { age: 40 }; // TypeError
 
@@ -77,21 +77,21 @@ company.address.country = 'USA'; // OK
 
 const colors = ['red'];
 colors.push('green');
-console.log(colors); // ["red", "green"]
+//console.log(colors); // ["red", "green"]
 
 colors.pop();
 colors.pop();
-console.log(colors); // []
+// []
 
 //colors = []; // TypeError
 
 let scores = [75, 80, 95];
 for (const score of scores) {
-    console.log(score);
+    //console.log(score);
 }
 
 function say(message='Hi') {
-    console.log(message);
+    //console.log(message);
 }
 
 say(); // 'Hi'
@@ -99,7 +99,7 @@ say('Hello') // 'Hello'
 
 function say(message) {
     message = typeof message !== 'undefined' ? message : 'Hi';
-    console.log(message);
+    //console.log(message);
 }
 say("Tyler"); // 'Hi'
 
@@ -109,44 +109,44 @@ let getPrice = function( price, tax = price * taxRate() ) {
 }
 
 let fullPrice = getPrice(100);
-console.log(fullPrice); // 110
+// 110
 
 // Rest Parameters
 let sum = (...args) => args.filter(e => typeof e === 'number').reduce((prev, curr) => prev + curr);
-let result = sum(10,'Hi',null,undefined,20); 
-console.log(result);
+//let result = sum(10,'Hi',null,undefined,20); 
+
 
 var showNumbers = new Function('...numbers', 'console.log(numbers)');
-showNumbers(1, 2, 3);
+//showNumbers(1, 2, 3);
 
 // Spread Operator
 const odd = [1,3,5];
 const combined = [2,4,6, ...odd];
-console.log(combined);
+
 
 let rivers = ['Nile', 'Ganges', 'Yangte'];
 let moreRivers = ['Danube', 'Amazon'];
 
 rivers.push(...moreRivers)
-console.log(rivers)
+
 
 let spreadscores = [80, 70, 90];
 let copiedScores = [...spreadscores];
-console.log(copiedScores); // [80, 70, 90]
+// [80, 70, 90]
 
 let chars = ['A', ...'BC', 'D'];
-console.log(chars); // ["A", "B", "C", "D"]
+// ["A", "B", "C", "D"]
 
 //Object Literal Syntax Extensions in ES6
-let name1 = 'Computer',
-    status1 = 'On';
+let name = 'Computer',
+    status = 'On';
 
 let machine0 = {
-   name: name1,
-   status: status1
+   name,
+   status
 };
 
-console.log(machine0)
+//console.log(machine0)
 
 let prefix = 'machine';
 let machine = {
@@ -154,8 +154,8 @@ let machine = {
     [prefix + ' hours']: 10000
 };
 
-console.log(machine['machine name']); // server
-console.log(machine['machine hours']); // 10000
+//console.log(machine['machine name']); // server
+//console.log(machine['machine hours']); // 10000
 
 let server = {
     name: 'Server',
@@ -167,27 +167,84 @@ let server = {
     }
 };
 
-server['starting up']();
+//server['starting up']();
 
 //JavaScript for…of Loop
 let scores1 = [80, 90, 70];
 
 for (const score of scores1) {
-    console.log(score);
+    //console.log(score);
 }
 
-console.log(scores1)
 
 let colors1 = ['Red', 'Green', 'Blue'];
 
 for (const [index, color] of colors1.entries()) {
-    console.log(`${color} is at index ${index}`);
+    //console.log(`${color} is at index ${index}`);
 }
 
 // Octal and Binary Literals
 "use strict"
 let c = 0o51; // invalid octal 
-console.log(c);
 
-let f = 0b111;
-console.log(f); // 7
+
+let f = 0b111; // 7
+
+//Template Literals
+let post = {
+    title: 'JavaScript Template Literals',
+    excerpt: 'Introduction to JavaScript template literals in ES6',
+    body: 'Content of the post will be here...',
+    tags: ['es6', 'template literals', 'javascript']
+};
+
+let { title, excerpt, body, tags } = post;
+
+let postHtml = `
+<article>
+    <header>
+        <h1>${title}</h1>
+    </header>
+    <section>
+        <div>${excerpt}</div>
+        <div>${body}</div>
+    </section>
+    <footer>
+        <ul>
+            ${tags.map(tag => `<li>${tag}</li>`).join('\n            ')}
+        </ul>
+    </footer>
+</article>
+`;
+
+let firstName = 'Jhonny',
+    lastName = 'Depp';
+
+let greeting = `Hi ${firstName}, ${lastName}`;
+
+let price = 8.99,
+    tax = 0.1;
+
+let netPrice = `Net Price:$${(price * (1 + tax)).toFixed(2)}`;
+
+function format(literals, ...substitutions) {
+    let result = '';
+    
+    for (let i = 0; i < substitutions.length; i++) {
+        result += literals[i];
+        result += substitutions[i];
+        
+    }
+
+    result += literals[literals.length - 1];
+    return result;
+}
+
+let quantity = 9,
+    priceEach = 8.99,
+    result = format`${quantity} items cost $${(quantity * priceEach).toFixed(2)}.`;
+   
+//console.log(result);
+
+
+
