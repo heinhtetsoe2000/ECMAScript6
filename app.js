@@ -5,7 +5,7 @@ import diff from './diff.js';
 
 //cal.add();
 //cal.multiply();
-setMessage(diff(cal.a,cal.b));
+setMessage(diff(cal.a, cal.b));
 //setMessage('Sorye ge ton!');
 
 const h1 = document.createElement('h1');
